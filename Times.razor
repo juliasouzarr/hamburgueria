@@ -1,0 +1,29 @@
+﻿@page "/Times"
+@using Components.models
+@inherits CTime
+
+<h3>Hambúrgueres</h3>
+
+<div class="container-sm">
+    <div class="row">
+        @foreach (var timis in teams)
+        {
+            <div class="col">
+                <div class="card" style="width: 13rem;">
+                    <img src="@timis.Image" class="card-img-top" alt="@timis.Titulo">
+                    <div class="card-body">
+                        <p class="card-text">@timis.Titulo</p>
+                        <p class="card-text">@timis.Descricao</p>
+                        <p class="card-text">@timis.Preco</p>
+                        <a href="/Time/@timis.Id" class="btn btn-primary">Comprar </a>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+@code {
+    List<CTime> teams = Produtos.Estoque;
+}
