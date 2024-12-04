@@ -1,0 +1,49 @@
+﻿@page "/Time/{Id:int}"
+@using Components.models
+
+<div class="container-sm">
+
+    <div class="row">
+
+
+        <div class="col-md-4">
+
+            <div class="card">
+                <img src="@team.Image" class="card-img-top" alt="@team.Titulo">
+              
+
+            </div>
+        </div>
+        <div class="col-md-8">
+
+            <div class="card">
+               
+                <div class="card-body">
+
+                    <h1 class="card-text ">@team.Titulo</h1>
+                    <p class="card-text">@team.DescricaoComp</p>
+                    <p class="card-text"> <b>POR APENAS: R$@team.Preco</b> </p>
+
+                    <a href="#" class="btn btn-success">Comprar</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    private CTime team;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        var teams = Produtos.Estoque;
+          
+
+            team = teams.FirstOrDefault(x => x.Id == this.Id);
+        
+    }
+}
